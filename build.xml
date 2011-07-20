@@ -1,0 +1,105 @@
+<project name="we-guestbook" default="dist" basedir=".">
+	<description>Buildfile for our Web-Engineeing Guestbook using Struts 2 and Tiles</description>
+
+	<!-- TODO: Set: Where is Catalina? -->
+	<property name="catalina.home" value="C:\Program Files\Apache Software Foundation\Tomcat 7.0"/> 
+	<!-- /TODO -->
+
+	<!-- Paths -->
+	<property name="app.name"	value="we-guestbook"/>
+	<property name="app.path"	value="${basedir}/${app.name}"/>
+
+	<property name="build.home"    value="${basedir}/build"/>
+	<property name="lib.home"		value="${basedir}/lib" />
+	<property name="dist.home"     value="${basedir}/dist"/>
+	<property name="docs.home"     value="${basedir}/docs"/>
+	<property name="src.home"      value="${basedir}/src"/>
+	<property name="web.home"      value="${basedir}/WebContent"/>
+
+	<!-- Compilesettings -->
+	<property name="compile.debug"       value="false"/>
+	<property name="compile.deprecation" value="true"/>
+	<property name="compile.optimize"    value="true"/>
+
+	<!-- Misc Settings -->
+	<property name="file.encoding" value="ISO8859-15"/>
+	
+	<!-- link to tomcat -->
+	<path id="compile.classpath">
+		<fileset dir="${catalina.home}/bin">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement location="${catalina.home}/lib"/>
+		<fileset dir="${catalina.home}/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement location="${basedir}/WebContent/WEB-INF/lib"/>
+		<fileset dir="${basedir}/WebContent/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<!-- the glue! -->
+	<taskdef resource="org/apache/catalina/ant/catalina.tasks" classpathref="compile.classpath"/>
+
+	<!-- TARGETS -->
+		
+	<target name="all" depends="clean,dist" />
+		
+	<target name="prepare">
+		<!-- create directories -->
+		<mkdir  dir="${build.home}"/>
+		<mkdir  dir="${build.home}/WEB-INF"/>
+		<mkdir  dir="${build.home}/WEB-INF/classes"/>
+		<mkdir  dir="${build.home}/WEB-INF/lib"/>
+		
+		<!-- static content -->
+		<copy todir="${build.home}">
+		  <fileset dir="${web.home}"/>
+		</copy>
+		
+		<!-- libs -->
+		<copy todir="${build.home}/WEB-INF/lib">
+		  <fileset dir="${lib.home}"/>
+		</copy>
+	</target>
+		
+	<target name="compile" depends="prepare">
+		<!-- compile -->
+		<mkdir    dir="${build.home}/WEB-INF/classes"/>
+		<javac encoding="UTF-8" srcdir="${src.home}"
+		      destdir="${build.home}/WEB-INF/classes"
+		        debug="${compile.debug}"
+		  deprecation="${compile.deprecation}"
+		     optimize="${compile.optimize}">
+		<classpath refid="compile.classpath"/>
+		</javac>
+		
+		<!-- copy classes -->
+		<copy  todir="${build.home}/WEB-INF/classes">
+		  <fileset dir="${src.home}" excludes="**/*.java"/>
+		</copy>
+	</target>
+		
+	<target name="dist" depends="compile">
+		<!-- build WAR file -->
+		<mkdir dir="${dist.home}"/>
+		<jar jarfile="${dist.home}/${app.name}.war" basedir="${build.home}"/>
+	</target>
+		
+	<target name="clean">
+		<!-- delete intermediate -->
+		<delete dir="${build.home}"/>
+		<delete dir="${dist.home}"/>
+	</target>
+		
+	<target name="javadoc" depends="compile">
+		<!-- let javadoc compiler do its work -->
+		<mkdir          dir="${basedir}/docs/api"/>
+		<javadoc sourcepath="${src.home}"
+		            destdir="${basedir}/docs/api"
+		       packagenames="*">
+		  <classpath refid="compile.classpath"/>
+		</javadoc>
+	</target>
+</project>
