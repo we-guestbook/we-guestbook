@@ -13,12 +13,12 @@ import gb.model.db.DatabaseException;
 import gb.model.db.Guestbook;
 
 /**
- * Servlet fÃ¼r Suche im GÃ¤stebuch
+ * Servlet für Suche im Gästebuch
  */
 public class InitServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet{
 
 	/**
-	 * GÃ¤stebuchdatenbank initialisieren
+	 * Gästebuchdatenbank initialisieren
 	 */
 	public void init() throws ServletException {
 		Guestbook instance = Guestbook.getInstance();
@@ -42,26 +42,26 @@ public class InitServlet extends javax.servlet.http.HttpServlet implements javax
 		String searchText = getParameterAsString("tfSearchtext", "", request);
 		String author = getParameterAsString("tfAuthor", "", request);
 		
-		// umwandeln in Kleinbuchstaben, fÃ¼r Case-Insensitive Suche
+		// umwandeln in Kleinbuchstaben, für Case-Insensitive Suche
 		searchText = searchText.toLowerCase();
 		author = author.toLowerCase();
 		
-		// mind. ein Parameter wurde gesetzt; fÃ¼hren Suche durch
+		// mind. ein Parameter wurde gesetzt; führen Suche durch
 		Guestbook instance = Guestbook.getInstance();
 		
 		try {
-			// Liste fÃ¼r die Suchergebnisse
+			// Liste für die Suchergebnisse
 			ArrayList<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
-			// GÃ¤stebucheintrÃ¤ge holen
+			// Gästebucheinträge holen
 			List<GuestbookEntry> allEntries = instance.getAllEntries();
-			// EintrÃ¤ge durchgehen und passende raussuchen
+			// Einträge durchgehen und passende raussuchen
 			for (GuestbookEntry entry : allEntries) {
 				if (entry.getText().toLowerCase().contains(searchText)
 						&& entry.getAuthor().toLowerCase().contains(author)) {
 					result.add(entry);
 				}
 			}
-			// result an request anhÃ¤ngen
+			// result an request anhängen
 			request.setAttribute("result", result);
 			
 		} catch (DatabaseException e) {
@@ -73,7 +73,7 @@ public class InitServlet extends javax.servlet.http.HttpServlet implements javax
 	}
 	
 	/**
-	 * Hilfsmethode fÃ¼r Auslesen von String-Parametern aus Request
+	 * Hilfsmethode für Auslesen von String-Parametern aus Request
 	 */
 	protected String getParameterAsString(String name, String defaultValue,
 			HttpServletRequest request) {
@@ -82,7 +82,7 @@ public class InitServlet extends javax.servlet.http.HttpServlet implements javax
 			value = defaultValue;
 		}
 		value = value.trim();
-		return value;
+		return value; 
 	}
 	
 }

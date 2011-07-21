@@ -21,12 +21,12 @@ public class Blacklist extends DataFile {
 	private static Blacklist instance = null;
 
 	/**
-	 * Gibt die Instanz der GästebuchDB zurück
+	 * Gibt die Instanz der Gästebuchdatenbank zurück
 	 * 
 	 * @return Gästebuch-Instanz
 	 */
 	public static synchronized Blacklist getInstance() {
-		//ÃœberprÃ¼fung, ob bereits Instanz vorhanden
+		//Überprüfung, ob bereits Instanz vorhanden
 		if (instance == null) {
 			//neue Instanz holen
 			instance = new Blacklist();

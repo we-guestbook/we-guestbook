@@ -33,7 +33,7 @@ public class SearchAction extends ActionSupport implements ServletRequestAware {
 		String searchText;
 		String author;
 		
-		// Umwandlung in Kleinbuchstaben; fÃ¼r Case-Insensitive Suche
+		// Umwandlung in Kleinbuchstaben; für Case-Insensitive Suche
 		if(getSearchText() != null) {
 			searchText = getSearchText().toLowerCase();
 		} else {

@@ -3,7 +3,7 @@ package gb.model.beans;
 import org.apache.struts.validator.ValidatorForm;
 
 /**
- * Klasse, die das Suchformular für Gästebucheinträge abbildet
+ * Klasse, die das Suchformular für Gästebucheinträge abbildet 
  */
 public class SearchForm extends ValidatorForm {
 
