@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="classes" path="src"/>
-	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/bin/bootstrap.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/bin/tomcat-juli.jar"/>
 	<classpathentry kind="con" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib"/>
@@ -26,5 +26,6 @@
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/tomcat-jdbc.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/tomcat-util.jar"/>
 	<classpathentry kind="con" path="C:/Users/mixi/Desktop/Dokumente/Web-Engineering/we-guestbook/WebContent/WEB-INF/lib"/>
+	<classpathentry kind="lib" path="lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -2,19 +2,19 @@
 	<description>Buildfile for our Web-Engineeing Guestbook using Struts 2 and Tiles</description>
 
 	<!-- TODO: Set: Where is Catalina? -->
-	<property name="catalina.home" value="C:\Program Files\Apache Software Foundation\Tomcat 7.0"/> 
+	<property name="catalina" value="C:\Program Files\Apache Software Foundation\Tomcat 7.0"/> 
 	<!-- /TODO -->
 
 	<!-- Paths -->
 	<property name="app.name"	value="we-guestbook"/>
 	<property name="app.path"	value="${basedir}/${app.name}"/>
 
-	<property name="build.home"    value="${basedir}/build"/>
-	<property name="lib.home"		value="${basedir}/lib" />
-	<property name="dist.home"     value="${basedir}/dist"/>
-	<property name="docs.home"     value="${basedir}/docs"/>
-	<property name="src.home"      value="${basedir}/src"/>
-	<property name="web.home"      value="${basedir}/WebContent"/>
+	<property name="build"    value="${basedir}/build"/>
+	<property name="lib"		value="${basedir}/lib" />
+	<property name="dist"     value="${basedir}/dist"/>
+	<property name="docs"     value="${basedir}/docs"/>
+	<property name="src"      value="${basedir}/src"/>
+	<property name="web"      value="${basedir}/WebContent"/>
 
 	<!-- Compilesettings -->
 	<property name="compile.debug"       value="false"/>
@@ -26,11 +26,11 @@
 	
 	<!-- link to tomcat -->
 	<path id="compile.classpath">
-		<fileset dir="${catalina.home}/bin">
+		<fileset dir="${catalina}/bin">
 			<include name="*.jar"/>
 		</fileset>
-		<pathelement location="${catalina.home}/lib"/>
-		<fileset dir="${catalina.home}/lib">
+		<pathelement location="${catalina}/lib"/>
+		<fileset dir="${catalina}/lib">
 			<include name="*.jar"/>
 		</fileset>
 		<pathelement location="${basedir}/WebContent/WEB-INF/lib"/>
@@ -48,27 +48,27 @@
 		
 	<target name="prepare">
 		<!-- create directories -->
-		<mkdir  dir="${build.home}"/>
-		<mkdir  dir="${build.home}/WEB-INF"/>
-		<mkdir  dir="${build.home}/WEB-INF/classes"/>
-		<mkdir  dir="${build.home}/WEB-INF/lib"/>
+		<mkdir  dir="${build}"/>
+		<mkdir  dir="${build}/WEB-INF"/>
+		<mkdir  dir="${build}/WEB-INF/classes"/>
+		<mkdir  dir="${build}/WEB-INF/lib"/>
 		
 		<!-- static content -->
-		<copy todir="${build.home}">
-		  <fileset dir="${web.home}"/>
+		<copy todir="${build}">
+		  <fileset dir="${web}"/>
 		</copy>
 		
 		<!-- libs -->
-		<copy todir="${build.home}/WEB-INF/lib">
-		  <fileset dir="${lib.home}"/>
+		<copy todir="${build}/WEB-INF/lib">
+		  <fileset dir="${lib}"/>
 		</copy>
 	</target>
 		
 	<target name="compile" depends="prepare">
 		<!-- compile -->
-		<mkdir    dir="${build.home}/WEB-INF/classes"/>
-		<javac encoding="UTF-8" srcdir="${src.home}"
-		      destdir="${build.home}/WEB-INF/classes"
+		<mkdir    dir="${build}/WEB-INF/classes"/>
+		<javac encoding="UTF-8" srcdir="${src}"
+		      destdir="${build}/WEB-INF/classes"
 		        debug="${compile.debug}"
 		  deprecation="${compile.deprecation}"
 		     optimize="${compile.optimize}">
@@ -76,27 +76,27 @@
 		</javac>
 		
 		<!-- copy classes -->
-		<copy  todir="${build.home}/WEB-INF/classes">
-		  <fileset dir="${src.home}" excludes="**/*.java"/>
+		<copy  todir="${build}/WEB-INF/classes">
+		  <fileset dir="${src}" excludes="**/*.java"/>
 		</copy>
 	</target>
 		
 	<target name="dist" depends="compile">
 		<!-- build WAR file -->
-		<mkdir dir="${dist.home}"/>
-		<jar jarfile="${dist.home}/${app.name}.war" basedir="${build.home}"/>
+		<mkdir dir="${dist}"/>
+		<jar jarfile="${dist}/${app.name}.war" basedir="${build}"/>
 	</target>
 		
 	<target name="clean">
 		<!-- delete intermediate -->
-		<delete dir="${build.home}"/>
-		<delete dir="${dist.home}"/>
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
 	</target>
 		
 	<target name="javadoc" depends="compile">
 		<!-- let javadoc compiler do its work -->
 		<mkdir          dir="${basedir}/docs/api"/>
-		<javadoc sourcepath="${src.home}"
+		<javadoc sourcepath="${src}"
 		            destdir="${basedir}/docs/api"
 		       packagenames="*">
 		  <classpath refid="compile.classpath"/>
