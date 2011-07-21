@@ -2,7 +2,7 @@ package gb.model.actions;
 
 import gb.model.beans.GuestbookEntry;
 import gb.model.db.DatabaseException;
-import gb.model.db.GuestbookDB;
+import gb.model.db.Guestbook;
 
 import java.util.ArrayList;
 import java.util.List;

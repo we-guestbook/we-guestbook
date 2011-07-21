@@ -21,37 +21,23 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Klasse die als Zugriff auf die Gaestebuch-Datenbank dient.
- * 
- */
-public class GuestbookDB {
-
+public class Blacklist extends DataFile {
 	// Private Instanz-Variable fuer das Singleton-Pattern
-	private static GuestbookDB instance = null;
-
-	private static final String DB_FILE = "guestbook.dat";
-	private static final String SEPERATOR = "\\t";
-	private static final String DATE_FORMAT = "dd.MM.yyyy-HH:mm:ss";
-	private static final String ENCODING = "UTF-8";
-	private static final int POS_DATE = 0;
-	private static final int POS_AUTHOR = 1;
-	private static final int POS_TEXT = 2;
-	private static final int POS_EMAIL = 3;
+	private static Blacklist instance = null;
 
 	private String filename = null;
 	private DateFormat dateFormat = null;
 
 	/**
-	 * Gibt die Instanz der GÃ¤stebuchDB zurÃ¼ck
+	 * Gibt die Instanz der GästebuchDB zurück
 	 * 
-	 * @return GÃ¤stebuch-Instanz
+	 * @return Gästebuch-Instanz
 	 */
-	public static synchronized GuestbookDB getInstance() {
+	public static synchronized Blacklist getInstance() {
 		//ÃœberprÃ¼fung, ob bereits Instanz vorhanden
 		if (instance == null) {
 			//neue Instanz holen
-			instance = new GuestbookDB();
+			instance = new Blacklist();
 		}
 		return instance;
 	}
@@ -172,16 +158,21 @@ public class GuestbookDB {
 	/**
 	 * Private Konstruktor wegen Singleton-Pattern
 	 */
-	private GuestbookDB() {
+	private Blacklist() {
 		dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
 	}
 
 	public void init(String pathToWebInf) {
-		GuestbookDB db = GuestbookDB.getInstance();
+		Blacklist db = Blacklist.getInstance();
 		if (db.filename == null) {
-			db.filename = pathToWebInf + "/" + DB_FILE;
+			db.filename = pathToWebInf + "/" + getFile();
 		}
 	}
+
+	@Override
+	public String getFile() {
+		return "blacklist.dat";
+	}	
 
 }

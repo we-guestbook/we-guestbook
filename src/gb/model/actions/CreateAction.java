@@ -2,9 +2,9 @@ package gb.model.actions;
 
 import java.util.Date;
 
-import guestbook.model.beans.GuestbookEntry;
-import guestbook.model.db.DatabaseException;
-import guestbook.model.db.GuestbookDB;
+import gb.model.beans.GuestbookEntry;
+import gb.model.db.DatabaseException;
+import gb.model.db.Guestbook;
 
 import org.apache.struts2.components.ActionMessage;
 import org.apache.struts2.dispatcher.mapper.ActionMapping;
