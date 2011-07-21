@@ -227,7 +227,7 @@ div.searchResults span.error {
 
  ul#Navigation {
     margin: 0; padding: 0.5em;
-    text-align: center;
+    text-align: left;
     background-color: white;
     font-size:80%;
     display:block;

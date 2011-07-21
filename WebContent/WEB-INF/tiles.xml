@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/baseLayout.jsp">
+      <put-attribute name="title"  value="Base layout"/>
+      <put-attribute name="header" value="/header.jsp"/>
+      <put-attribute name="menu"   value="/menu.jsp"/>
+      <put-attribute name="body"   value="/body.jsp"/>
+      <put-attribute name="footer"   value="/footer.jsp"/>
+  </definition>
+  
+  <definition name="welcome" extends="baseLayout">
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/welcome.jsp"/>      
+  </definition>
+  
+  
+  <definition name="viewEntry" extends="baseLayout">
+      <put-attribute name="title"  value="An entry"/>
+      <put-attribute name="body"   value="/viewEntry.jsp"/>      
+  </definition>
+  
+  <definition name="searchEntry" extends="baseLayout">
+      <put-attribute name="title"  value="Search for special entries"/>
+      <put-attribute name="body"   value="/searchEntry.jsp"/>
+  </definition>
+  
+  <definition name="deleteAccount" extends="baseLayout">
+      <put-attribute name="title"  value="Delete Account"/>
+      <put-attribute name="body"   value="/deleteAccount.jsp"/>
+  </definition>
+  
+  <definition name="userRegistration" extends="baseLayout">
+      <put-attribute name="title"  value="User registration"/>
+      <put-attribute name="body"   value="/userRegistration.jsp"/>
+  </definition>
+  
+  <definition name="login" extends="baseLayout">
+      <put-attribute name="title"  value="Login"/>
+      <put-attribute name="body"   value="/login.jsp"/>
+  </definition>
+  
+  <definition name="deleteGuestbookentry" extends="baseLayout">
+      <put-attribute name="title"  value="Delete Guestbook entry"/>
+      <put-attribute name="body"   value="/deleteGuestbookentry.jsp"/>
+  </definition>
+  
+  <definition name="createGuestbookentry" extends="baseLayout">
+      <put-attribute name="title"  value="Create Guestbook entry"/>
+      <put-attribute name="body"   value="/createGuestbookentry.jsp"/>
+  </definition>
+  
+  <definition name="friends" extends="baseLayout">
+      <put-attribute name="title"  value="Friends"/>
+      <put-attribute name="body"   value="/friends.jsp"/>      
+  </definition>
+  
+  <definition name="office" extends="baseLayout">
+      <put-attribute name="title"  value="Office"/>
+      <put-attribute name="body"   value="/office.jsp"/>      
+  </definition>
+  
+</tiles-definitions>

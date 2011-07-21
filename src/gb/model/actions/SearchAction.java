@@ -31,7 +31,7 @@ public class SearchAction extends ActionSupport implements ServletRequestAware {
 		String searchText;
 		String author;
 		
-		// Umwandlung in Kleinbuchstaben; für Case-Insensitive Suche
+		// Umwandlung in Kleinbuchstaben; fï¿½r Case-Insensitive Suche
 		if(getSearchText() != null) {
 			searchText = getSearchText().toLowerCase();
 		} else {
@@ -50,7 +50,7 @@ public class SearchAction extends ActionSupport implements ServletRequestAware {
 			ArrayList<GuestbookEntry> searchResult = new ArrayList<GuestbookEntry>();
 			List<GuestbookEntry> allEntries = instance.getAllEntries();
 			
-			// Einträge durchschauen und zur Suchanfrage passende herausfinden
+			// Eintrï¿½ge durchschauen und zur Suchanfrage passende herausfinden
 			for (GuestbookEntry entry : allEntries) {
 				if (entry.getText().toLowerCase().contains(searchText)
 						&& entry.getAuthor().toLowerCase().contains(author)) {
