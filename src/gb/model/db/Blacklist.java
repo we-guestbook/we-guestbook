@@ -1,6 +1,6 @@
 package gb.model.db;
 
-import gb.model.beans.GuestbookEntry;
+import gb.model.beans.BlacklistEntry;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -12,21 +12,13 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 public class Blacklist extends DataFile {
 	// Private Instanz-Variable fuer das Singleton-Pattern
 	private static Blacklist instance = null;
-
-	private String filename = null;
-	private DateFormat dateFormat = null;
 
 	/**
 	 * Gibt die Instanz der GästebuchDB zurück
@@ -47,9 +39,9 @@ public class Blacklist extends DataFile {
 	 * 
 	 * @return alle GÃ¤stebucheintrÃ¤ge
 	 */
-	public List<GuestbookEntry> getAllEntries() throws DatabaseException {
+	public List<BlacklistEntry> getAllEntries() throws DatabaseException {
 
-		List<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
+		List<BlacklistEntry> result = new ArrayList<BlacklistEntry>();
 
 		try {
 			Reader in = new InputStreamReader(new FileInputStream(filename),
@@ -58,25 +50,9 @@ public class Blacklist extends DataFile {
 
 			//Daten einlesen
 			while (reader.ready()) {
-				String line = reader.readLine();
-				
+				final String line = reader.readLine();				
 				if (line.length() > 0) {
-					String[] items = line.split(SEPERATOR);
-					
-					if (items.length != 4) {
-						throw new ParseException("Wrong number of values", 0);
-					}
-
-					Date date = dateFormat.parse(items[POS_DATE]);
-					String author = items[POS_AUTHOR];
-					String text = items[POS_TEXT];
-					String email = items[POS_EMAIL];
-					
-					if (email.equals("null")) {
-						email = null;
-					}
-					GuestbookEntry entry = new GuestbookEntry(date, author,
-							text, email);
+					BlacklistEntry entry = new BlacklistEntry(line);
 					result.add(entry);
 				}
 			}
@@ -93,10 +69,6 @@ public class Blacklist extends DataFile {
 					e);
 		}
 
-		// Sortiere die Eintraege noch
-		Comparator<GuestbookEntry> reverseOrder = Collections.reverseOrder();
-		Collections.sort(result, reverseOrder);
-
 		return result;
 	}
 
@@ -108,39 +80,12 @@ public class Blacklist extends DataFile {
 	 * @throws DatabaseException
 	 *             Wenn ein Fehler beim Zugriff auf die Datenbank auftritt.
 	 */
-	public void addEntry(GuestbookEntry entry) throws DatabaseException {
+	public void addEntry(BlacklistEntry entry) throws DatabaseException {
 
 		try {
 			OutputStream out = new FileOutputStream(filename, true);
 			Writer writer = new OutputStreamWriter(out, ENCODING);
-
-			String dataLine = "";
-			int numValues = 4;
-			for (int i = 0; i < numValues; i++) {
-				switch (i) {
-				case POS_AUTHOR:
-					dataLine += entry.getAuthor();
-					break;
-				case POS_DATE:
-					dataLine += dateFormat.format(entry.getDate());
-					break;
-				case POS_TEXT:
-					dataLine += entry.getText();
-					break;
-				case POS_EMAIL:
-					String email = entry.getEmail();
-					if (email != null && email.length() == 0) {
-						email = "null";
-					}
-					dataLine += email;
-					break;
-				}
-				if (i < (numValues - 1)) {
-					dataLine += "\t";
-				}
-			}
-
-			writer.write(dataLine + "\n");
+			writer.write(entry.getBadWord() + "\n");
 			writer.flush();
 			writer.close();
 
@@ -159,8 +104,6 @@ public class Blacklist extends DataFile {
 	 * Private Konstruktor wegen Singleton-Pattern
 	 */
 	private Blacklist() {
-		dateFormat = new SimpleDateFormat(DATE_FORMAT);
-
 	}
 
 	public void init(String pathToWebInf) {

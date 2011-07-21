@@ -24,7 +24,7 @@ public class CreateAction extends ActionSupport {
 	@Override
 	public String execute() {
 		
-		GuestbookDB instance = GuestbookDB.getInstance();
+		Guestbook instance = Guestbook.getInstance();
 		GuestbookEntry entry = new GuestbookEntry(getDate(), getAuthor(), 
 				getText(), getEmail());
 

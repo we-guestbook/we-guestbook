@@ -12,4 +12,5 @@ public abstract class DataFile {
 	protected static final int POS_TEXT = 2;
 	protected static final int POS_EMAIL = 3;
 
+	protected String filename = null;
 }

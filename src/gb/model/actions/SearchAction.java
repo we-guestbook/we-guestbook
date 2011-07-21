@@ -47,7 +47,7 @@ public class SearchAction extends ActionSupport implements ServletRequestAware {
 		}
 
 		// mind. ein Parameter wurde gesetzt; führen Suche durch
-		GuestbookDB instance = GuestbookDB.getInstance();
+		Guestbook instance = Guestbook.getInstance();
 		try {
 			ArrayList<GuestbookEntry> searchResult = new ArrayList<GuestbookEntry>();
 			List<GuestbookEntry> allEntries = instance.getAllEntries();
@@ -70,16 +70,7 @@ public class SearchAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * Hilfsmethode zum Auslesen von String-Parametern aus dem Request, die
-	 * Request-Parameter als String zurückgibt. Leerzeichen am Anfang und Ende werden getrimmt.
-	 * 
-	 * @param name
-	 *            Name des Request-Parameters
-	 * @param defaultValue
-	 *            Default-Wert für den Fehler-Fall
-	 * @param request
-	 *            HTTP-Request
-	 * @return Wert des Parameters
+	 * Hilfsmethode zum Auslesen von String-Parametern aus dem Request
 	 */
 	protected String getParameterAsString(String name, String defaultValue,
 			HttpServletRequest request) {
