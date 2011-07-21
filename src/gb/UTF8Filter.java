@@ -1,4 +1,4 @@
-package gb.sys;
+package gb;
 
 import java.io.IOException;
 

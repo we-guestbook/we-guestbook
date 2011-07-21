@@ -11,7 +11,7 @@
 
 	<property name="build"    value="${basedir}/build"/>
 	<property name="lib"		value="${basedir}/lib" />
-	<property name="dist"     value="${basedir}/dist"/>
+	<property name="dist"     value="C:\Program Files\Apache Software Foundation\Tomcat 7.0\webapps"/>
 	<property name="docs"     value="${basedir}/docs"/>
 	<property name="src"      value="${basedir}/src"/>
 	<property name="web"      value="${basedir}/WebContent"/>
