@@ -12,7 +12,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,20 +62,16 @@ public class Blacklist extends DataFile {
 			throw new DatabaseException(
 					"Error while reading guestbook database:\n"
 							+ e.getMessage(), e);
-		} catch (ParseException e) {
-			throw new DatabaseException(
-					"Guestbook database is in wrong format:\n" + e.getMessage(),
-					e);
 		}
-
+		
 		return result;
 	}
 
 	/**
-	 * FÃ¼gt einen neuen GÃ¤stebuch-Eintrag der Datenbank hinzu
+	 * Fügt einen neuen Gästebuch-Eintrag der Datenbank hinzu
 	 * 
 	 * @param entry
-	 *            Der GÃ¤stebuch-Eintrag
+	 *            Der Gästebuch-Eintrag
 	 * @throws DatabaseException
 	 *             Wenn ein Fehler beim Zugriff auf die Datenbank auftritt.
 	 */

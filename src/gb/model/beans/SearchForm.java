@@ -7,6 +7,10 @@ import org.apache.struts.validator.ValidatorForm;
  */
 public class SearchForm extends ValidatorForm {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String searchText;
 	private String author;
 	

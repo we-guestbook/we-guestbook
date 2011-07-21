@@ -18,6 +18,11 @@ import gb.model.db.Guestbook;
 public class InitServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Gästebuchdatenbank initialisieren
 	 */
 	public void init() throws ServletException {

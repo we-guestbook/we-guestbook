@@ -1,29 +1,27 @@
 package gb.model.actions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gb.model.beans.GuestbookEntry;
 import gb.model.db.DatabaseException;
 import gb.model.db.Guestbook;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
-import org.apache.struts.validator.DynaValidatorForm;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchAction extends ActionSupport implements ServletRequestAware {
 
-    private HttpServletRequest request;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private HttpServletRequest request;
 	private String searchText;
 	private String author;
 	
@@ -52,7 +50,7 @@ public class SearchAction extends ActionSupport implements ServletRequestAware {
 			ArrayList<GuestbookEntry> searchResult = new ArrayList<GuestbookEntry>();
 			List<GuestbookEntry> allEntries = instance.getAllEntries();
 			
-			// Eintr√§ge durchschauen und zur Suchanfrage passende herausfinden
+			// Eintr‰ge durchschauen und zur Suchanfrage passende herausfinden
 			for (GuestbookEntry entry : allEntries) {
 				if (entry.getText().toLowerCase().contains(searchText)
 						&& entry.getAuthor().toLowerCase().contains(author)) {

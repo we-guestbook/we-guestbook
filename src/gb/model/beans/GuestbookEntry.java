@@ -11,6 +11,11 @@ import org.apache.struts.validator.ValidatorForm;
 public class GuestbookEntry extends ValidatorForm implements
 		Comparable<GuestbookEntry> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Date date;
 	private String author;
 	private String text;

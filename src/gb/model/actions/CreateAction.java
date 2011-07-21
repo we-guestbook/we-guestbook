@@ -6,18 +6,19 @@ import gb.model.beans.GuestbookEntry;
 import gb.model.db.DatabaseException;
 import gb.model.db.Guestbook;
 
-import org.apache.struts2.components.ActionMessage;
-import org.apache.struts2.dispatcher.mapper.ActionMapping;
-
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 
-
 /**
- * Struts-Action zum Erstellen eines Gaestebuch-Eintrags
+ * Struts-Action zum Erstellen eines Gästebuch-Eintrags
  */
 public class CreateAction extends ActionSupport {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String author, text, email;
 	private Date date;
 
@@ -29,7 +30,7 @@ public class CreateAction extends ActionSupport {
 				getText(), getEmail());
 
 		try {
-			//entry hinzufÃ¼gen
+			//entry hinzufügen
 			instance.addEntry(entry);
 		} catch (DatabaseException e) {
 			return Action.ERROR;
