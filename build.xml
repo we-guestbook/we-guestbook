@@ -88,7 +88,7 @@
 	<target name="clean">
 		<!-- delete intermediate -->
 		<delete dir="${build}"/>
-		<delete dir="${dist}"/>
+		<delete file="${dist}/${app.name}.war"/>
 	</target>
 		
 	<target name="javadoc" depends="compile">
