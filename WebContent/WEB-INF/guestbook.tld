@@ -8,8 +8,8 @@
   <shortname>guestbook-taglib</shortname>
 
   <tag>
-    <name>test</name>
-    <tagclass>gb.tags.Test</tagclass>
+    <name>sort</name>
+    <tagclass>gb.tags.Sort</tagclass>
     <bodycontent>empty</bodycontent>
   </tag>
 
