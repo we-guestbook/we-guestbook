@@ -24,6 +24,7 @@ public class UTF8Filter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF8");
 		chain.doFilter(request, response);
+//hallo
 	}
 
 	
