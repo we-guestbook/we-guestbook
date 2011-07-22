@@ -3,26 +3,24 @@
 
 	<!-- TODO: Set: Where is Catalina? -->
 	<property name="catalina" value="C:\Program Files\Apache Software Foundation\Tomcat 7.0"/> 
+	<!-- TODO: Set: Where do you want your web archive WAR to be created? -->
+	<property name="dist"     value="C:\Program Files\Apache Software Foundation\Tomcat 7.0\webapps"/>
 	<!-- /TODO -->
 
-	<!-- Paths -->
+	<!-- paths -->
 	<property name="app.name"	value="we-guestbook"/>
 	<property name="app.path"	value="${basedir}/${app.name}"/>
 
 	<property name="build"    value="${basedir}/build"/>
 	<property name="lib"		value="${basedir}/lib" />
-	<property name="dist"     value="C:\Program Files\Apache Software Foundation\Tomcat 7.0\webapps"/>
 	<property name="docs"     value="${basedir}/docs"/>
 	<property name="src"      value="${basedir}/src"/>
 	<property name="web"      value="${basedir}/WebContent"/>
 
-	<!-- Compilesettings -->
+	<!-- compilesettings -->
 	<property name="compile.debug"       value="false"/>
 	<property name="compile.deprecation" value="true"/>
 	<property name="compile.optimize"    value="true"/>
-
-	<!-- Misc Settings -->
-	<property name="file.encoding" value="ISO8859-15"/>
 	
 	<!-- link to tomcat -->
 	<path id="compile.classpath">
@@ -33,8 +31,8 @@
 		<fileset dir="${catalina}/lib">
 			<include name="*.jar"/>
 		</fileset>
-		<pathelement location="${basedir}/WebContent/WEB-INF/lib"/>
-		<fileset dir="${basedir}/WebContent/WEB-INF/lib">
+		<pathelement location="${lib}"/>
+		<fileset dir="${lib}">
 			<include name="*.jar"/>
 		</fileset>
 	</path>
@@ -95,10 +93,8 @@
 		
 	<target name="javadoc" depends="compile">
 		<!-- let javadoc compiler do its work -->
-		<mkdir          dir="${basedir}/docs/api"/>
-		<javadoc sourcepath="${src}"
-		            destdir="${basedir}/docs/api"
-		       packagenames="*">
+		<mkdir dir="${basedir}/docs/api"/>
+		<javadoc sourcepath="${src}" destdir="${basedir}/docs/api" packagenames="*">
 		  <classpath refid="compile.classpath"/>
 		</javadoc>
 	</target>

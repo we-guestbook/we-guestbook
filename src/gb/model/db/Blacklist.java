@@ -20,12 +20,12 @@ public class Blacklist extends DataFile {
 	private static Blacklist instance = null;
 
 	/**
-	 * Gibt die Instanz der Gästebuchdatenbank zurück
+	 * Gibt die Instanz der GÃ¤stebuchdatenbank zurÃ¼ck
 	 * 
-	 * @return Gästebuch-Instanz
+	 * @return GÃ¤stebuch-Instanz
 	 */
 	public static synchronized Blacklist getInstance() {
-		//Überprüfung, ob bereits Instanz vorhanden
+		//ÃœberprÃ¼fung, ob bereits Instanz vorhanden
 		if (instance == null) {
 			//neue Instanz holen
 			instance = new Blacklist();
@@ -68,10 +68,10 @@ public class Blacklist extends DataFile {
 	}
 
 	/**
-	 * Fügt einen neuen Gästebuch-Eintrag der Datenbank hinzu
+	 * FÃ¼gt einen neuen GÃ¤stebuch-Eintrag der Datenbank hinzu
 	 * 
 	 * @param entry
-	 *            Der Gästebuch-Eintrag
+	 *            Der GÃ¤stebuch-Eintrag
 	 * @throws DatabaseException
 	 *             Wenn ein Fehler beim Zugriff auf die Datenbank auftritt.
 	 */

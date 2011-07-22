@@ -6,7 +6,7 @@ import java.util.Date;
 import org.apache.struts.validator.ValidatorForm;
 
 /**
- * Klasse, die einen Gätebucheintrag abbildet
+ * Klasse, die einen GÃ¤stebucheintrag abbildet
  */
 public class GuestbookEntry extends ValidatorForm implements
 		Comparable<GuestbookEntry> {

@@ -13,7 +13,7 @@ import gb.model.db.DatabaseException;
 import gb.model.db.Guestbook;
 
 /**
- * Servlet für Suche im Gästebuch
+ * Servlet fÃ¼r Suche im GÃ¤stebuch
  */
 public class InitServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet{
 
@@ -23,7 +23,7 @@ public class InitServlet extends javax.servlet.http.HttpServlet implements javax
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Gästebuchdatenbank initialisieren
+	 * GÃ¤stebuchdatenbank initialisieren
 	 */
 	public void init() throws ServletException {
 		Guestbook instance = Guestbook.getInstance();
@@ -47,26 +47,26 @@ public class InitServlet extends javax.servlet.http.HttpServlet implements javax
 		String searchText = getParameterAsString("tfSearchtext", "", request);
 		String author = getParameterAsString("tfAuthor", "", request);
 		
-		// umwandeln in Kleinbuchstaben, für Case-Insensitive Suche
+		// umwandeln in Kleinbuchstaben, fï¿½r Case-Insensitive Suche
 		searchText = searchText.toLowerCase();
 		author = author.toLowerCase();
 		
-		// mind. ein Parameter wurde gesetzt; führen Suche durch
+		// mind. ein Parameter wurde gesetzt; fï¿½hren Suche durch
 		Guestbook instance = Guestbook.getInstance();
 		
 		try {
-			// Liste für die Suchergebnisse
+			// Liste fÃ¼r die Suchergebnisse
 			ArrayList<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
-			// Gästebucheinträge holen
+			// GÃ¤stebucheintrÃ¤ge holen
 			List<GuestbookEntry> allEntries = instance.getAllEntries();
-			// Einträge durchgehen und passende raussuchen
+			// EintrÃ¤ge durchgehen und passende raussuchen
 			for (GuestbookEntry entry : allEntries) {
 				if (entry.getText().toLowerCase().contains(searchText)
 						&& entry.getAuthor().toLowerCase().contains(author)) {
 					result.add(entry);
 				}
 			}
-			// result an request anhängen
+			// result an request anhÃ¤ngen
 			request.setAttribute("result", result);
 			
 		} catch (DatabaseException e) {
@@ -78,7 +78,7 @@ public class InitServlet extends javax.servlet.http.HttpServlet implements javax
 	}
 	
 	/**
-	 * Hilfsmethode für Auslesen von String-Parametern aus Request
+	 * Hilfsmethode fÃ¼r Auslesen von String-Parametern aus Request
 	 */
 	protected String getParameterAsString(String name, String defaultValue,
 			HttpServletRequest request) {

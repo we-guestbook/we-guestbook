@@ -10,7 +10,7 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * Struts-Action zum Erstellen eines Gästebuch-Eintrags
+ * Struts-Action zum Erstellen eines GÃ¤stebuch-Eintrags
  */
 public class CreateAction extends ActionSupport {
 
@@ -30,7 +30,7 @@ public class CreateAction extends ActionSupport {
 				getText(), getEmail());
 
 		try {
-			//entry hinzufügen
+			//entry hinzufï¿½gen
 			instance.addEntry(entry);
 		} catch (DatabaseException e) {
 			return Action.ERROR;
