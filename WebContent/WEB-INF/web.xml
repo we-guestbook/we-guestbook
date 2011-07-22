@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <display-name>Struts2Example15</display-name>
+    <display-name>WE-Guestbook</display-name>
 
     <context-param>
         <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
@@ -11,14 +11,17 @@
         <filter-name>BlacklistFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <filter-mapping>
+	
+	<filter-mapping>
         <filter-name>Utf8Filter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+  
     <listener>
         <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
     </listener>
@@ -29,7 +32,7 @@
 			org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
         </filter-class>
     </filter>
-
+<!-- 
     <filter>
         <filter-name>BlacklistFilter</filter-name>
         <filter-class>gb.BlacklistFilter</filter-class>
@@ -39,11 +42,9 @@
         <filter-name>Utf8Filter</filter-name>
         <filter-class>gb.UTF8Filter</filter-class>
     </filter>
-
+ -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-
-        
 
 </web-app>

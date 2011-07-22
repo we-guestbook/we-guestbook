@@ -55,14 +55,4 @@
       <put-attribute name="body"   value="/createGuestbookentry.jsp"/>
   </definition>
   
-  <definition name="friends" extends="baseLayout">
-      <put-attribute name="title"  value="Friends"/>
-      <put-attribute name="body"   value="/friends.jsp"/>      
-  </definition>
-  
-  <definition name="office" extends="baseLayout">
-      <put-attribute name="title"  value="Office"/>
-      <put-attribute name="body"   value="/office.jsp"/>      
-  </definition>
-  
 </tiles-definitions>
