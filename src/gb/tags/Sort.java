@@ -48,8 +48,12 @@ public class Sort extends TagSupport {
 	private ArrayList<GuestbookEntry> list = null;
 
 	public int doStartTag() throws JspException {
+		if (list==null)
+		{
+			return SKIP_BODY;			
+		}
 		try {
-			if (list != null && list.size() > 0) {
+			if (list.size() > 0) {
 				final Comparator<GuestbookEntry> c;
 				if (attribute.equals("date")) {
 					c = new ComparatorDate();
