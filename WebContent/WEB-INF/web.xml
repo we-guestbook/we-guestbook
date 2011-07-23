@@ -23,7 +23,7 @@
  -->
     <filter-mapping>
         <filter-name>BlacklistFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/CreateSubmit</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>struts2</filter-name>
