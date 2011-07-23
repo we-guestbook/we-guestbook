@@ -70,7 +70,7 @@ public class Sort extends TagSupport {
 				}
 				StringBuilder entries = new StringBuilder();
 				for (GuestbookEntry ge : list) {
-					entries.append("<p>");
+					entries.append("<div><p>");
 					entries.append(ge.getDate());
 					entries.append("</p><p>");
 					entries.append(ge.getEmail());
@@ -78,7 +78,7 @@ public class Sort extends TagSupport {
 					entries.append(ge.getAuthor());
 					entries.append("</p><p>");
 					entries.append(ge.getText());
-					entries.append("</p>");
+					entries.append("</p></div>");
 				}
 				pageContext.getOut().print(entries);
 			}
