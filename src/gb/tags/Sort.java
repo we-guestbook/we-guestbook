@@ -73,7 +73,7 @@ public class Sort extends TagSupport {
 					entries.append("<div class=\"searchHit\">");
 					entries.append("<div class=\"searchHit_date\">");
 					entries.append(ge.getDate());
-					entries.append("</div><div class=\"searchHit_author\"><a href=\"mailto:\">");
+					entries.append("</div><div class=\"searchHit_author\"><a href=\"mailto:\"");
 					entries.append(ge.getEmail());
 					entries.append("\">");
 					entries.append(ge.getAuthor());
