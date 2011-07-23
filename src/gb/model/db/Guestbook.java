@@ -60,9 +60,9 @@ public class Guestbook extends DataFile {
 	 * 
 	 * @return alle Gästebucheinträge
 	 */
-	public List<GuestbookEntry> getAllEntries() throws DatabaseException {
+	public ArrayList<GuestbookEntry> getAllEntries() throws DatabaseException {
 
-		List<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
+		ArrayList<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
 
 		try {
 			Reader in = new InputStreamReader(new FileInputStream(filename),
