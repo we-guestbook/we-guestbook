@@ -69,17 +69,20 @@ public class Sort extends TagSupport {
 					Collections.reverse(list);
 				}
 				StringBuilder entries = new StringBuilder();
+				entries.append("<div class=\"searchResults\">");
 				for (GuestbookEntry ge : list) {
-					entries.append("<div><p>");
+					entries.append("<div class=\"searchHit\">");
+					entries.append("<div class=\"searchHit_date\">");
 					entries.append(ge.getDate());
-					entries.append("</p><p>");
+					entries.append("</div>");
 					entries.append(ge.getEmail());
-					entries.append("</p><p>");
+					entries.append("</p><div class=\"searchHit_author\">");
 					entries.append(ge.getAuthor());
-					entries.append("</p><p>");
+					entries.append("</div><div class=\"searchHit_text\">");
 					entries.append(ge.getText());
-					entries.append("</p></div>");
+					entries.append("</div></div>");
 				}
+				entries.append("</div>");
 				pageContext.getOut().print(entries);
 			}
 		} catch (Exception e) {
