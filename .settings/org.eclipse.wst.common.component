@@ -3,7 +3,8 @@
     <wb-module deploy-name="Guestbook-WE-Reloaded">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Guestbook-WE-Reloaded"/>
+        <wb-resource deploy-path="/WEB-INF/lib" source-path="/lib"/>
         <property name="java-output-path" value="/Guestbook-WE-Reloaded/build/classes"/>
+        <property name="context-root" value="we-guestbook"/>
     </wb-module>
 </project-modules>
