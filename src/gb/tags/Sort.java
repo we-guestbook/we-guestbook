@@ -48,9 +48,8 @@ public class Sort extends TagSupport {
 	private ArrayList<GuestbookEntry> list = null;
 
 	public int doStartTag() throws JspException {
-		if (list==null)
-		{
-			return SKIP_BODY;			
+		if (list == null) {
+			return SKIP_BODY;
 		}
 		try {
 			if (list.size() > 0) {
@@ -74,11 +73,11 @@ public class Sort extends TagSupport {
 					entries.append("<div class=\"searchHit\">");
 					entries.append("<div class=\"searchHit_date\">");
 					entries.append(ge.getDate());
-					entries.append("</div>");
+					entries.append("</div><div class=\"searchHit_author\"><a href=\"mailto:\">");
 					entries.append(ge.getEmail());
-					entries.append("</p><div class=\"searchHit_author\">");
+					entries.append("\">");
 					entries.append(ge.getAuthor());
-					entries.append("</div><div class=\"searchHit_text\">");
+					entries.append("</a></div><div class=\"searchHit_text\">");
 					entries.append(ge.getText());
 					entries.append("</div></div>");
 				}
