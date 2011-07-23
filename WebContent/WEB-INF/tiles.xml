@@ -19,10 +19,19 @@
       <put-attribute name="body"   value="/welcome.jsp"/>      
   </definition>
   
+  <definition name="error" extends="baseLayout">
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/error.jsp"/>      
+  </definition>
   
   <definition name="viewEntry" extends="baseLayout">
       <put-attribute name="title"  value="An entry"/>
       <put-attribute name="body"   value="/viewEntry.jsp"/>      
+  </definition>
+  
+  <definition name="displayAll" extends="baseLayout">
+      <put-attribute name="title"  value="Display all entries"/>
+      <put-attribute name="body"   value="/result.jsp"/>      
   </definition>
   
   <definition name="searchEntry" extends="baseLayout">

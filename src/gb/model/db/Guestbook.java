@@ -42,12 +42,12 @@ public class Guestbook extends DataFile {
 	private DateFormat dateFormat = null;
 
 	/**
-	 * Gibt die Instanz der GÃ¤stebuch zurÃ¼ck
+	 * Gibt die Instanz der Gästebuch zurück
 	 * 
-	 * @return GÃ¤stebuch-Instanz
+	 * @return Gästebuch-Instanz
 	 */
 	public static synchronized Guestbook getInstance() {
-		//ÃœberprÃ¼fung, ob bereits Instanz vorhanden
+		//Überprüfung, ob bereits Instanz vorhanden
 		if (instance == null) {
 			//neue Instanz holen
 			instance = new Guestbook();
@@ -56,19 +56,19 @@ public class Guestbook extends DataFile {
 	}
 
 	/**
-	 * Gibt alle EintrÃ¤ge des GÃ¤stebuchs zurÃ¼ck.
+	 * Gibt alle Einträge des Gästebuchs zurück.
 	 * 
-	 * @return alle GÃ¤stebucheintrÃ¤ge
+	 * @return alle Gästebucheinträge
 	 */
-	public List<GuestbookEntry> getAllEntries() throws DatabaseException {
+	public ArrayList<GuestbookEntry> getAllEntries() throws DatabaseException {
 
-		List<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
-
+		ArrayList<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
+		System.out.println("Before Read in");
 		try {
 			Reader in = new InputStreamReader(new FileInputStream(filename),
 					ENCODING);
 			BufferedReader reader = new BufferedReader(in);
-
+			System.out.println("After Read in");
 			//Daten einlesen
 			while (reader.ready()) {
 				String line = reader.readLine();
@@ -77,6 +77,7 @@ public class Guestbook extends DataFile {
 					String[] items = line.split(SEPERATOR);
 					
 					if (items.length != 4) {
+					    System.out.println("ITEMS ZUVIEL!");
 						throw new ParseException("Wrong number of values", 0);
 					}
 
@@ -94,13 +95,16 @@ public class Guestbook extends DataFile {
 				}
 			}
 		} catch (FileNotFoundException e) {
+		    System.out.println("File not found!");
 			throw new DatabaseException("The database file " + filename
 					+ " could not be found.");
 		} catch (IOException e) {
+		    System.out.println("IOException .... !");
 			throw new DatabaseException(
 					"Error while reading guestbook database:\n"
 							+ e.getMessage(), e);
 		} catch (ParseException e) {
+		    System.out.println("ParseException ....");
 			throw new DatabaseException(
 					"Guestbook database is in wrong format:\n" + e.getMessage(),
 					e);
@@ -114,15 +118,19 @@ public class Guestbook extends DataFile {
 	}
 
 	/**
-	 * FÃ¼gt einen neuen GÃ¤stebuch-Eintrag der Datenbank hinzu
+	 * Fügt einen neuen Gästebuch-Eintrag der Datenbank hinzu
 	 * 
 	 * @param entry
-	 *            Der GÃ¤stebuch-Eintrag
+	 *            Der Gästebuch-Eintrag
 	 * @throws DatabaseException
 	 *             Wenn ein Fehler beim Zugriff auf die Datenbank auftritt.
 	 */
 	public void addEntry(GuestbookEntry entry) throws DatabaseException {
 
+	    System.out.println(entry.getEmail());
+	    System.out.println(entry.getText());
+	    
+	    
 		try {
 			OutputStream out = new FileOutputStream(filename, true);
 			Writer writer = new OutputStreamWriter(out, ENCODING);
@@ -135,6 +143,8 @@ public class Guestbook extends DataFile {
 					dataLine += entry.getAuthor();
 					break;
 				case POS_DATE:
+				    System.out.println("entryDate" + entry.getDate());
+				    
 					dataLine += dateFormat.format(entry.getDate());
 					break;
 				case POS_TEXT:

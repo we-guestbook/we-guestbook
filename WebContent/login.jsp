@@ -6,16 +6,16 @@
             </p>
             
             <!--  Form for signing guestbook  -->
-            <form action="SearchServlet">
+            <form>
                 <!-- "Name" field -->
                 <div class="formField">
-                    <label for="tfSearchtext">Login-name</label>
-                    <input type="text" name="tfloginname" id="tfloginname"/>
+                    <label for="tfLoginname">Login-name</label>
+                    <input type="text" name="tfLoginname" id="tfLoginname"/>
                 </div>
                 <!-- "Title" field -->
                 <div class="formField">
-                    <label for="tfAuthor">Password</label>
-                    <input type="password" name="tfpassword" id="tfpassword"/>
+                    <label for="tfPassword">Password</label>
+                    <input type="password" name="tfPassword" id="tfPassword"/>
                 </div>
                 <!-- Submit-Button -->
                 <div class="formField">

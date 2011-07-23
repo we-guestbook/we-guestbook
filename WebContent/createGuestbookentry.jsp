@@ -1,37 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ taglib prefix="html" uri="/struts-tags" %>
 
 
-            <!-- Subheader and explanation text for this page -->
-            <h2>Create your Guestbook Entry</h2>
+            <h2>Create Entry</h2>
             <p>
-                Create your Guestbook entry.
+               You can create an entry on this page.
             </p>
             
-           <span class="error">
-           <html:fielderror/>
-           </span>
-
-            <html:form action="CreateSubmit" method="post">
-
+            <!--  Form for signing guestbook  -->
+            <form action="CreateSubmit" method="post">
+                <!-- "Name" field -->
                 <div class="formField">
-                    <html:textfield name="author" label="Your Name"/>
+                    <label>Name</label>
+                    <input type="text" name="name" id="name"/>
                 </div>
-
+                <!-- "Title" field -->
                 <div class="formField">
-                    <html:textfield name="email" label="Your Mail"/>
+                    <label>Mail</label>
+                    <input type="text" name="email" id="email"/>
                 </div>
-               
+                <!-- "" field -->
                 <div class="formField">
-                    <html:textarea name="text" label="Your Message"/>
+                    <label>Your Message</label>
+                    <textarea rows="10" cols="20" name="text" id="text"></textarea>
                 </div>
-
                 <!-- Submit-Button -->
-                <div class="formButton">
-                    <html:submit value="Erstellen"/>
+                <div class="formField">
+                    <button type="submit">Go for it!</button>
                 </div>
-                </html:form>
+            </form>

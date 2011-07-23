@@ -10,12 +10,31 @@
 		<action name="*Link" method="{1}" class="gb.model.actions.LinkAction">
 			<result name="welcome" type="tiles">welcome</result>
 			<result name="deleteGuestbookentry" type="tiles">deleteGuestbookentry</result>
-			<result name="createGuestbookentry" type="tiles">createGuestbookentry</result>
 			<result name="deleteAccount" type="tiles">deleteAccount</result>
 			<result name="login" type="tiles">login</result>
 			<result name="searchEntry" type="tiles">searchEntry</result>
 			<result name="userRegistration" type="tiles">userRegistration</result>
-			<result name="viewEntry" type="tiles">viewEntry</result>
+			<result name="createGuestbookentry" type="tiles">createGuestbookentry</result>
 		</action>
+    
+    <action name="DisplayAll" class="gb.model.actions.SearchAction">
+            <result type="tiles">displayAll</result>
+            <result name="error" type="tiles">error</result>
+    </action>
+    
+    <action name="SearchSubmit" class="gb.model.actions.SearchAction">
+            <result type="tiles">viewEntry</result>
+            <result name="error" type="tiles">error</result>
+            <result name="input" type="tiles">viewEntry</result>
+     </action>
+      
+      <action name="CreateSubmit" class="gb.model.actions.CreateAction">
+            <result>DisplayAll.action</result>
+            <result name="error" type="tiles">error</result>
+            <result name="input" type="tiles">createGuestbookentry</result>
+      </action>
+    
+    
+		  
 	</package>
 </struts>

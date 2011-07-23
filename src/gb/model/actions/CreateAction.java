@@ -14,60 +14,60 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class CreateAction extends ActionSupport {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String author, text, email;
-	private Date date;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    
+    private String author, text, email;
+    private Date date = new Date();
 
-	@Override
-	public String execute() {
-		
-		Guestbook instance = Guestbook.getInstance();
-		GuestbookEntry entry = new GuestbookEntry(getDate(), getAuthor(), 
-				getText(), getEmail());
+    @Override
+    public String execute() {
+        
+        Guestbook instance = Guestbook.getInstance();
+        GuestbookEntry entry = new GuestbookEntry(getDate(), getAuthor(), 
+                getText(), getEmail());
 
-		try {
-			//entry hinzuf�gen
-			instance.addEntry(entry);
-		} catch (DatabaseException e) {
-			return Action.ERROR;
-		}
-		return Action.SUCCESS;
-	}
+        try {
+            //entry hinzuf�gen
+            instance.addEntry(entry);
+        } catch (DatabaseException e) {
+            return Action.ERROR;
+        }
+        return Action.SUCCESS;
+    }
 
-	private void setEmail(String email) {
-		this.email = email;
-	}
-	
-	private String getEmail() {
-		return email;
-	}
+    private void setEmail(String email) {
+        this.email = email;
+    }
+    
+    private String getEmail() {
+        return email;
+    }
 
-	private void setText(String text) {
-		this.text = text;
-	}
-	
-	private String getText() {
-		return text;
-	}
+    private void setText(String text) {
+        this.text = text;
+    }
+    
+    private String getText() {
+        return text;
+    }
 
-	private void setAuthor(String author) {
-		this.author = author;
-	}
-	
-	private String getAuthor() {
-		return author;
-	}
+    private void setAuthor(String author) {
+        this.author = author;
+    }
+    
+    private String getAuthor() {
+        return author;
+    }
 
-	private void setDate(Date date) {
-		this.date = date;
-	}
-	
-	private Date getDate() {
-		return date;
-	}
+    private void setDate(Date date) {
+        this.date = date;
+    }
+    
+    private Date getDate() {
+        return date;
+    }
 
 }

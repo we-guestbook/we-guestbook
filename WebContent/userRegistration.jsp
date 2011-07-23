@@ -6,7 +6,7 @@
             </p>
             
             <!--  Form for signing guestbook  -->
-            <form action="RegisterServlet">
+            <form action="SearchServlet">
                 <!-- "Name" field -->
                 <div class="formField">
                     <label for="tfloginname">Login-name</label>

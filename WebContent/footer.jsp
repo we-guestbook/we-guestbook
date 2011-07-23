@@ -1,2 +1,2 @@
-<p> Just a footer.</p>
+<div class="footer"><p>mgim - that's My Guestbook IMproved.</p></div>
 

@@ -26,7 +26,7 @@ public class GuestbookEntry extends ValidatorForm implements
 		this.author = null;
 		this.text = null;
 		this.email = null;
-		this.date = new Date();
+		this.date = null;
 	}
 
 	public GuestbookEntry(Date date, String author, String text, String email) {
@@ -41,7 +41,7 @@ public class GuestbookEntry extends ValidatorForm implements
 	}
 
 	public void setDate(Date date) {
-		this.date = date;
+		this.date = new Date();
 	}
 
 	public String getAuthor() {

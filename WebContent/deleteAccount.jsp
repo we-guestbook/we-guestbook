@@ -7,4 +7,4 @@
                 </div>
                 
 <!-- Andernfalls nur folgenden Text anzeigen: -->
-<p>You can't delete your account without being logged in.</p>
+<p>You can't delete your account without being logged in</p>
