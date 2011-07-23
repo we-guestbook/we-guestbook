@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Klasse die als Zugriff auf die Gaestebuch-Datenbank dient.
@@ -61,7 +60,7 @@ public class Guestbook extends DataFile {
 	 * @return alle Gästebucheinträge
 	 */
 	public ArrayList<GuestbookEntry> getAllEntries() throws DatabaseException {
-
+		
 		ArrayList<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
 		System.out.println("Before Read in");
 		try {
