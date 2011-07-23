@@ -3,14 +3,33 @@
   "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
   "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
 <taglib>
-  <tlibversion>1.0</tlibversion>
-  <jspversion>1.1</jspversion>
-  <shortname>guestbook-taglib</shortname>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>guestbook-taglib</shortname>
 
-  <tag>
-    <name>sort</name>
-    <tagclass>gb.tags.Sort</tagclass>
-    <bodycontent>empty</bodycontent>
-  </tag>
-
+	<tag>
+		<name>sort</name>
+		<tagclass>gb.tags.Sort</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>order</name>
+			<required>no</required>
+			<rtexprvalue>no</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>attribute</name>
+			<required>yes</required>
+			<rtexprvalue>no</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>list</name>
+			<required>yes</required>
+			<rtexprvalue>yes</rtexprvalue>
+		</attribute>
+	</tag>
+	<function>
+		<name>getEntries</name>
+		<function-class>gb.tags.Sort</function-class>
+		<function-signature>ArrayList&lt;GuestbookEntry&gt; getEntries()</function-signature>
+	</function>
 </taglib>
