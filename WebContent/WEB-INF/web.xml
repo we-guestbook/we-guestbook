@@ -2,6 +2,16 @@
 <web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>WE-Guestbook</display-name>
 
+
+	<filter>
+        <filter-name>BlacklistFilter</filter-name>
+        <filter-class>gb.BlacklistFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>BlacklistFilter</filter-name>
+        <url-pattern>/CreateSubmit</url-pattern>
+    </filter-mapping>
     <servlet>
         <description>
             Servlet das nur fuer Initialisierungs-Aufgaben beim Starten
@@ -16,18 +26,7 @@
         <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
         <param-value>/WEB-INF/tiles.xml</param-value>
     </context-param>
-<!-- 
-    <filter-mapping>
-        <filter-name>BlacklistFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
- 
-	<filter-mapping>
-        <filter-name>Utf8Filter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
--->
     <listener>
         <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
     </listener>
