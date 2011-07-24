@@ -67,6 +67,5 @@
 	<classpathentry kind="lib" path="lib/org.apache.felix.main-1.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/org.apache.felix.shell-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/org.apache.felix.shell.tui-1.0.2.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-tiles-plugin-2.2.3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
