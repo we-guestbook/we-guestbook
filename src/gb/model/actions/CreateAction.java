@@ -18,55 +18,81 @@ public class CreateAction extends ActionSupport {
      * 
      */
     private static final long serialVersionUID = 1L;
-    
     private String author, text, email;
     private Date date = new Date();
 
-    @Override
     public String execute() {
-        
-        Guestbook instance = Guestbook.getInstance();
-        GuestbookEntry entry = new GuestbookEntry(getDate(), getAuthor(), 
-                getText(), getEmail());
+        Guestbook database = Guestbook.getInstance();
+        GuestbookEntry entry = new GuestbookEntry(getDate(), getAuthor(),
+                        getText(), getEmail());
 
         try {
-            //entry hinzuf�gen
-            instance.addEntry(entry);
+            database.addEntry(entry);
         } catch (DatabaseException e) {
             return Action.ERROR;
         }
+
         return Action.SUCCESS;
+
     }
 
-    private void setEmail(String email) {
-        this.email = email;
-    }
-    
-    private String getEmail() {
-        return email;
-    }
-
-    private void setText(String text) {
-        this.text = text;
-    }
-    
-    private String getText() {
-        return text;
-    }
-
-    private void setAuthor(String author) {
+    /**
+     * @param author
+     *            the author to set
+     */
+    public void setAuthor(String author) {
         this.author = author;
     }
-    
-    private String getAuthor() {
+
+    /**
+     * @return the author
+     */
+    public String getAuthor() {
         return author;
     }
 
-    private void setDate(Date date) {
+    /**
+     * @param text
+     *            the text to set
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    /**
+     * @return the text
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * @param email
+     *            the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param date
+     *            the date to set
+     */
+    public void setDate(Date date) {
         this.date = date;
     }
-    
-    private Date getDate() {
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
         return date;
     }
 

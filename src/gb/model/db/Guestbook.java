@@ -19,16 +19,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Klasse die als Zugriff auf die Gaestebuch-Datenbank dient.
  * 
  */
-public class Guestbook extends DataFile {
+public class Guestbook {
 
 	// Private Instanz-Variable fuer das Singleton-Pattern
 	private static Guestbook instance = null;
 
+	private static final String DB_FILE = "guestbook.dat";
 	private static final String SEPERATOR = "\\t";
 	private static final String DATE_FORMAT = "dd.MM.yyyy-HH:mm:ss";
 	private static final String ENCODING = "UTF-8";
@@ -41,42 +43,38 @@ public class Guestbook extends DataFile {
 	private DateFormat dateFormat = null;
 
 	/**
-	 * Gibt die Instanz der Gästebuch zurück
+	 * Gibt die Instanz der Klasse zurueck
 	 * 
-	 * @return Gästebuch-Instanz
+	 * @return Instanz des Waehrungs-Rechners
 	 */
 	public static synchronized Guestbook getInstance() {
-		//Überprüfung, ob bereits Instanz vorhanden
 		if (instance == null) {
-			//neue Instanz holen
+			// Wenn noch keine Instanz da ist, dann erstellen wir eine und
+			// initialisieren sie
 			instance = new Guestbook();
 		}
 		return instance;
 	}
 
 	/**
-	 * Gibt alle Einträge des Gästebuchs zurück.
+	 * Gibt alle Eintraege des Gaestebuchs zurueck.
 	 * 
-	 * @return alle Gästebucheinträge
+	 * @return Alle Eintraege des Gaestebuchs.
 	 */
 	public ArrayList<GuestbookEntry> getAllEntries() throws DatabaseException {
-		
+
 		ArrayList<GuestbookEntry> result = new ArrayList<GuestbookEntry>();
-		System.out.println("Before Read in");
+
 		try {
 			Reader in = new InputStreamReader(new FileInputStream(filename),
 					ENCODING);
 			BufferedReader reader = new BufferedReader(in);
-			System.out.println("After Read in");
-			//Daten einlesen
+
 			while (reader.ready()) {
 				String line = reader.readLine();
-				
 				if (line.length() > 0) {
 					String[] items = line.split(SEPERATOR);
-					
 					if (items.length != 4) {
-					    System.out.println("ITEMS ZUVIEL!");
 						throw new ParseException("Wrong number of values", 0);
 					}
 
@@ -84,7 +82,6 @@ public class Guestbook extends DataFile {
 					String author = items[POS_AUTHOR];
 					String text = items[POS_TEXT];
 					String email = items[POS_EMAIL];
-					
 					if (email.equals("null")) {
 						email = null;
 					}
@@ -94,16 +91,13 @@ public class Guestbook extends DataFile {
 				}
 			}
 		} catch (FileNotFoundException e) {
-		    System.out.println("File not found!");
 			throw new DatabaseException("The database file " + filename
 					+ " could not be found.");
 		} catch (IOException e) {
-		    System.out.println("IOException .... !");
 			throw new DatabaseException(
 					"Error while reading guestbook database:\n"
 							+ e.getMessage(), e);
 		} catch (ParseException e) {
-		    System.out.println("ParseException ....");
 			throw new DatabaseException(
 					"Guestbook database is in wrong format:\n" + e.getMessage(),
 					e);
@@ -117,19 +111,15 @@ public class Guestbook extends DataFile {
 	}
 
 	/**
-	 * Fügt einen neuen Gästebuch-Eintrag der Datenbank hinzu
+	 * Fuegt einen neuen Gaestebuch-Eintrag in die Datenbank ein
 	 * 
 	 * @param entry
-	 *            Der Gästebuch-Eintrag
+	 *            Der Gaestebuch-Eintrag
 	 * @throws DatabaseException
 	 *             Wenn ein Fehler beim Zugriff auf die Datenbank auftritt.
 	 */
 	public void addEntry(GuestbookEntry entry) throws DatabaseException {
 
-	    System.out.println(entry.getEmail());
-	    System.out.println(entry.getText());
-	    
-	    
 		try {
 			OutputStream out = new FileOutputStream(filename, true);
 			Writer writer = new OutputStreamWriter(out, ENCODING);
@@ -142,8 +132,6 @@ public class Guestbook extends DataFile {
 					dataLine += entry.getAuthor();
 					break;
 				case POS_DATE:
-				    System.out.println("entryDate" + entry.getDate());
-				    
 					dataLine += dateFormat.format(entry.getDate());
 					break;
 				case POS_TEXT:
@@ -188,13 +176,8 @@ public class Guestbook extends DataFile {
 	public void init(String pathToWebInf) {
 		Guestbook db = Guestbook.getInstance();
 		if (db.filename == null) {
-			db.filename = pathToWebInf + "/" + getFile();
+			db.filename = pathToWebInf + "/" + DB_FILE;
 		}
-	}
-
-	@Override
-	public String getFile() {
-		return "guestbook.dat";
 	}
 
 }

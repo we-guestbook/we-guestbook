@@ -1,34 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
-<%@ taglib prefix="html" uri="/struts-tags" %>
+<h2>Create an entry</h2>
+            <s:form action="CreateSubmit" method="post">
 
+                <div class="formField">
+                    <s:textfield name="author" label="Your name"/>
+                </div>
 
-            <h2>Create Entry</h2>
-            <p>
-               You can create an entry on this page.
-            </p>
-            
-            <!--  Form for signing guestbook  -->
-            <form action="CreateSubmit" method="post">
-                <!-- "Name" field -->
                 <div class="formField">
-                    <label>Name</label>
-                    <input type="text" name="name" id="name"/>
+                    <s:textfield name="email" label="Your Mail"/>
                 </div>
-                <!-- "Title" field -->
+               
                 <div class="formField">
-                    <label>Mail</label>
-                    <input type="text" name="email" id="email"/>
+                    <s:textarea name="text" label="Your Text" rows="10" cols="30"/>
                 </div>
-                <!-- "" field -->
-                <div class="formField">
-                    <label>Your Message</label>
-                    <textarea rows="10" cols="20" name="text" id="text"></textarea>
-                </div>
+
                 <!-- Submit-Button -->
-                <div class="formField">
-                    <button type="submit">Go for it!</button>
+                <div class="formButton">
+                    <s:submit value="Erstellen"/>
                 </div>
-            </form>
+
+            </s:form>

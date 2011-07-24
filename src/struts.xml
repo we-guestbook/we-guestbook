@@ -29,7 +29,7 @@
      </action>
       
       <action name="CreateSubmit" class="gb.model.actions.CreateAction">
-            <result>DisplayAll.action</result>
+            <result type="tiles">displayAll</result>
             <result name="error" type="tiles">error</result>
             <result name="input" type="tiles">createGuestbookentry</result>
       </action>
